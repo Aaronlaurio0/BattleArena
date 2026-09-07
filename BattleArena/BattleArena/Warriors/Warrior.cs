@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace BattleArena.Warriors
 {
-    class Warrior
+    public class Warrior
     {
-        public string Name;
+        public String Name { get; private set; }
+        public int Health { get; private set; }
+        public int AttackPower { get; private set; }
 
-        public int Health;
-
-        public int AttackPower;
-
-
-
+        public Warrior(string name, int health, int attackPower )
+        {
+            Name = name;
+            Health = health;
+            AttackPower = attackPower;
+        }
     }
 }

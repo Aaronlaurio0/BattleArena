@@ -14,15 +14,9 @@ namespace BattleArena
         static void Main(string[] args)
 
         {
-            Warrior Den = new Warriors.Warrior();
-            Den.Name = "Den";
-            Den.Health = 100;
-            Den.AttackPower = 30;
+            Warrior Den = new Warriors.Warrior("Den", 100, 30);
+            Warrior Lhi = new Warriors.Warrior("Lhi", 500, 5);
 
-            Warrior Lhi = new Warriors.Warrior();
-            Lhi.Name = "Lhi";
-            Lhi.Health = 500;
-            Lhi.AttackPower = 5;
 
             Console.WriteLine($"{Den.Name} has " +
     $"{Den.Health} health and {Den.AttackPower} attack power.");
