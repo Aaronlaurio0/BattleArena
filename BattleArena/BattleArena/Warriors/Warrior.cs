@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BattleArena.Warriors
 {
-    public class Warrior
+    public abstract class Warrior
     {
         private bool _isAlive;
 
         public string Name { get; private set; }
-        public string SpecialAttackName { get; set; }
         public int Health { get; private set; }
         public int AttackPower { get; private set; }
 
@@ -24,39 +23,28 @@ namespace BattleArena.Warriors
             }
             private set { _isAlive = value;}
         }
-
         
-        public Warrior(string name, int health, int attackPower, string specialAttackName)
+        public Warrior(string name, int health, int attackPower)
         {
             Name = name;
             Health = health;
             AttackPower = attackPower;
-            SpecialAttackName = specialAttackName;
         }
 
-        private void TakeDamage(int damage)
+        protected virtual void TakeDamage(int damage)
         {
             Health -= damage;
             if (Health < 0) Health = 0;
-
         }
 
-        public void Attack(Warrior target)
-        {
-            target.Health -= AttackPower;
-            if (target.Health < 0) target.Health = 0;
-            Console.WriteLine($"{target.Name} takes {AttackPower} damage!");
-            Console.WriteLine($"{target.Name} has {target.Health} health remaining.");
-            Console.WriteLine("---------------------------------");
-        }
-
-        public void DisplayStatus()
+        public virtual void DisplayStatus()
         {
             Console.WriteLine($"------------=={Name}==-------------");
             Console.WriteLine($"\t[+] Health: {Health}");
             Console.WriteLine($"\t[+] Attack Power: {AttackPower}");
-            Console.WriteLine($"\t[+] Special Attack : {SpecialAttackName}");
             Console.WriteLine("---------------------------------");
         }
+
+        public abstract void Attack(Warrior target);
     }
 }
