@@ -14,8 +14,10 @@ namespace BattleArena
     {
         static void Main(string[] args)
         {
-            var Den = new Warriors.Marksman("Den", 100, 30, 3);
-            var Lhi = new Warriors.Tank("Lhi", 500, 5, 10);
+            var Den = new Warriors.Den("Den", 100, 30, 3);
+            var Lhi = new Warriors.Lhi("Lhi", 500, 5, 10);
+
+
 
             Den.DisplayStatus();
             Lhi.DisplayStatus();
@@ -24,10 +26,10 @@ namespace BattleArena
             {
                 Console.WriteLine($"================================");
                 Den.Attack(Lhi);
-                Lhi.Attack(Den);
-                Thread.Sleep(2000);
+                Lhi.DisplayStatus();
                 Console.WriteLine("---------------------------------");
                 Thread.Sleep(2000);
+                
             }
 
             Console.ReadKey();

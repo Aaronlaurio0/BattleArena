@@ -45,7 +45,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Warriors\Fighter.cs" />
+    <Compile Include="Warriors\Characters\Angel.cs" />
+    <Compile Include="Warriors\DamageInfo.cs" />
+    <Compile Include="Warriors\Characters\DenFighter.cs" />
+    <Compile Include="Warriors\Characters\ReyMM1.cs" />
+    <Compile Include="Warriors\Characters\LhiTANK.cs" />
     <Compile Include="Warriors\Warrior.cs" />
   </ItemGroup>
   <ItemGroup>

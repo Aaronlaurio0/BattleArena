@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BattleArena.Warriors
 {
-    public class Tank : Warrior
+    public class Lhi : Warrior
     {
         public int Shield;
-        public Tank(string name, int health, int attackPower, int shield)
-            : base(name, health, attackPower)
+        public Lhi(string name, int health, int attackPower, int shield)
+            : base("Lhi", health, attackPower, WarriorType.Tank)
         {
             Shield = shield;
         }
@@ -19,7 +19,8 @@ namespace BattleArena.Warriors
         public override void Attack(Warrior target)
         {
             var totalDamage = target.AttackPower - Shield;
-            TakeDamage(totalDamage);
+            var dmgInfo = new DamageInfo(AttackPower, "Huuu", HasCriticalChance);
+            TakeDamage(dmgInfo);
             Console.WriteLine($"\t->{Name}: Tara dito boi {target.Name}!");
             Thread.Sleep(1000);
             Console.WriteLine($"\t->{target.Name}: Ibaon mo! ");
@@ -30,8 +31,18 @@ namespace BattleArena.Warriors
             Console.WriteLine($"\t------- {target.Name} ------");
             Console.WriteLine($"\t    * DamageTaken: {totalDamage}");
             Console.WriteLine($"\t    * Health Remaining: {target.Health}");
-
         }
+
+
+
+        protected override void TakeDamage(DamageInfo damage)
+        {
+            var newActualDamage = damage.ActualAmountDamage - Shield;
+            var newDmgInfo = new DamageInfo(newActualDamage, damage.AttackType, damage.IsCritical);
+            base.TakeDamage(newDmgInfo);
+        }
+
+
 
     }
 }

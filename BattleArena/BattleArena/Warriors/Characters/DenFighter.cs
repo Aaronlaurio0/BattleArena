@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace BattleArena.Warriors
 {
-    public class Fighter : Warrior
+    public class Den : Warrior
     {
         public int SwordDamage;
-        public Fighter(string name, int health, int attackPower, int swordDamage)
-            : base(name, health, attackPower)
+        public Den(string name, int health, int attackPower, int swordDamage)
+            : base("Den", health, attackPower, WarriorType.Fighter)
         {
             SwordDamage = swordDamage;
+            attackPower = SwordDamage;
         }
 
         public override void Attack(Warrior target)
         {
             var totalDamage = target.AttackPower + SwordDamage;
-            TakeDamage(totalDamage);
-            Console.WriteLine($"\t->{Name}: Para sayo anf laban na to{target.Name}!");
+            var dmgInfo = new DamageInfo(AttackPower, "sapak", HasCriticalChance);
+            TakeDamage(dmgInfo);
+            Console.WriteLine($"\t->{Name}: Para sayo ang laban na to{target.Name}!");
             Thread.Sleep(1000);
 
             Console.WriteLine($"\t->{target.Name}: Bopis! ");

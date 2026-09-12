@@ -7,18 +7,21 @@ using System.Threading.Tasks;
 
 namespace BattleArena.Warriors
 {
-    public class Marksman : Warrior
+    public class Rey:Warrior
     {
         public int ArrowDamage;
-        public Marksman(string name, int health, int attackPower, int arrowDamage)
-            : base(name, health, attackPower)
+        public Rey(string name, int health, int attackPower, int arrowDamage)
+            : base("Rey", health, attackPower, WarriorType.Marksman)
         {
+
         }
 
         public override void Attack(Warrior target)
         {
             var totalDamage = target.AttackPower + ArrowDamage;
-            TakeDamage(totalDamage);
+            var dmgInfo = new DamageInfo(AttackPower, "Huuu", HasCriticalChance);
+            TakeDamage(dmgInfo);
+
             Console.WriteLine($"\t->{Name}: Hiyah Hiyah Hiyah {target.Name}!");
             Thread.Sleep(1000);
             Console.WriteLine($"\t->{target.Name}: Buti nga! ");
@@ -31,4 +34,5 @@ namespace BattleArena.Warriors
             Console.WriteLine($"\t    * Health Remaining: {target.Health}");
         }
     }
+
 }
